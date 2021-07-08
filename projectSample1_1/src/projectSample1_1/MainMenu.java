@@ -385,9 +385,9 @@ public class MainMenu extends JFrame{
 		list.setFont(new Font("Discovery",Font.PLAIN, 18));
 		panel1_2.add(list);
 		
-		WareHouse wareHouse = new WareHouse();
+		/*WareHouse wareHouse = new WareHouse();
 		List<Item> itemList = wareHouse.getItems();
-		
+		*/
 		/*int x = 0 ; 
 		int y = 0 ;
 		for(Item item:itemList) {
