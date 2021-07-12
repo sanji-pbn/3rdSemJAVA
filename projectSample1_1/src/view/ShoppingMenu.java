@@ -1,6 +1,8 @@
-package projectSample1_1;
+package view;
 
 // to make image work on main-menu
 public interface ShoppingMenu {
-	public double getShoppingMenu();
+	
+	//public double getShoppingMenu();
+
 }

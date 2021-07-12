@@ -1,10 +1,11 @@
-package projectSample1_1;
+package view;
 
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.ImageIcon;
@@ -33,6 +34,9 @@ public class MainMenu extends JFrame{
 	//- 1 panel
 	private static JPanel panel1_1,panel1_2,panel1_3,panel1_4,panel1_5;
 	private static JTextField text1_1,text1_2,text1_3,text1_4,text1_5,text1_6,text1_7,text1_8;
+	
+	//private static List<JTextField> textFieldList = new ArrayList<JTextField>();
+	
 	private static JTextArea text1_9;
 	//- 2 panel
 	private static JCheckBox meat1b, meat1c, meat1d, meat1e;
@@ -46,43 +50,9 @@ public class MainMenu extends JFrame{
 	private static JTextField txtMeat1b, txtMeat1c, txtMeat1d, txtMeat1e;
 	private static JTextField numVeg1a, numVeg1b, numVeg1c, numVeg1d, numVeg1e, numVeg1f;
 	
-	/*
-	 *  classes bhana bandai hunuhuntyo 
-	 *  ani tyo submit garne kura k bannu hudai tyo, k ho k bhayo
-	 *  Binding ko k bhandai hunuhuntyo, maelae nasuneko lae idk
-	 *  akai thau ma bhayooo 
-	 *  arko class arko class
-	 *  same same same same information actionListener repeat bhako xa, way to make it short easier????
-	 *  
-	 *  aja da lae bhannu bhako
-	 *  getter ra setter 
-	 *  bill banauda submit ani arko array use garera save garne 
-	 *  warehouse ko lagi kasari bhanaune bhannu bhako hola--------- complicated
-	 */
-
-	public static void main(String[] args) {
-		ShoppingMenu();
-	}
-	
-	// since it is a static method, there is no this, alternative new instance of a class which implements AL
-	// why I used static method
-	/*
-	 * Static methods takes all the data from parameters and compute something from those parameters, with no 
-	 * reference to variable
-	 * 
-	 * I could have used a conductor
-	 * public MainMenu(), but no
-	 * 
-	 */
-	/*
-	public void randomNumbers() {
-		Random ran = new Random();
-		int n = ran.nextInt(1000)+1;
-		String val = String.valueOf(n);
-		text1_1.setText(val);
-	}*/
 	
 	public static void ShoppingMenu() {
+		
 		frame = new JFrame("Menu");
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -192,6 +162,7 @@ public class MainMenu extends JFrame{
 			}
 			
 		});
+		
 		menuFile.add(file01);
 		///////////////////////////////////////////////
 		
@@ -1151,7 +1122,7 @@ public class MainMenu extends JFrame{
 				// TODO Auto-generated method stub
 				frame.setVisible(false);
 				FirstPage fP = new FirstPage();
-				fP.homePage();
+				fP.show();
 			}
 			
 		});
@@ -1180,8 +1151,6 @@ public class MainMenu extends JFrame{
 		btnPrint1_3.setFont(new Font("Tahoma", Font.PLAIN, 28));
 		//btnPrint1_1.setBounds(35, 75, 212, 73);
 		panel1_5.add(btnPrint1_3);
-
-
 		
 		frame.setVisible(true);
 	}
