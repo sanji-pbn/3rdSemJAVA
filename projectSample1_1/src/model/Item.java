@@ -10,6 +10,7 @@ public class Item {
 	private ItemType type;
 	private int qty = 1;
 	private Date expiryDate;
+	@SuppressWarnings("unused")
 	private double total;
 
 	public Item() {

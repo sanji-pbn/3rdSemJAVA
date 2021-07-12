@@ -79,8 +79,10 @@ public class Customer implements ModelValidation {
 			return false;
 		} else if (mobileNr.isBlank() || mobileNr.isEmpty()) {
 			return false;
-		} 
-		return address.validate();
+		} else if (!address.validate()) {
+			return false;
+		}		
+		return true;
 	}
 	
 	public Date getDate() {

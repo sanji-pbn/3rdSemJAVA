@@ -56,10 +56,8 @@ public class AddItem extends Page implements ItemListener {
 		labelSelect.setBounds(10, 10, 100, 100);
 		panel.add(labelSelect);
 
-		JComboBox<Object> itemDropDown = createDropDown();
-		
+		JComboBox<Object> itemDropDown = createDropDown();		
 		itemDropDown.addItemListener(this);
-
 		panel.add(itemDropDown);
 
 		JLabel labelQty = new JLabel("Qty");
@@ -70,6 +68,7 @@ public class AddItem extends Page implements ItemListener {
 		panel.add(textQty);
 
 		JButton btnConfirm = new JButton("Confirm");
+		btnConfirm.setBounds(20, 50, 100, 30);
 		btnConfirm.addActionListener(new ActionListener() {
 
 			@Override
@@ -79,11 +78,8 @@ public class AddItem extends Page implements ItemListener {
 				
 				selectedItemList.add(selectedItem);
 				
-				//ApplicationGlobal.selectedItem = selectedItem;
 				System.out.println("Confirm button pressed " + itemDropDown.getSelectedItem());
 				System.out.println("the selectedItem is: "+ selectedItem.getToString());
-				//customer.getItems().add(selectedItem);
-				//frame.dispatchEvent(e);
 				frame.setVisible(false);
 				frame.dispose();
 				
@@ -91,7 +87,6 @@ public class AddItem extends Page implements ItemListener {
 		});
 
 		panel.add(btnConfirm);
-
 		JButton btnCancel = new JButton("Cancel");
 		btnCancel.addActionListener(new ActionListener() {
 

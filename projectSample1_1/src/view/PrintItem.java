@@ -12,6 +12,9 @@ import javax.swing.border.EmptyBorder;
 import model.Customer;
 import model.Item;
 
+/**
+ * Class to Print list of items bought by customer
+ * */
 public class PrintItem extends Page {
 
 	private Customer selectedCustomer;
@@ -58,28 +61,32 @@ public class PrintItem extends Page {
 		area.setFont(font);
 
 		area.setEnabled(true);
-		area.append("\tCustomer Billing Systems\n\n"
-				+ "\n-----------------------------------------------------------------------------------\n");
-		// =================================================
-		area.setEnabled(true);
-		// =================================================
-		 
+		area.append("\tCustomer Billing System\n");
 		SimpleDateFormat tTime = new SimpleDateFormat("HH:mm:ss");
-		//tTime.format(timer.getTime());
 		Date dt = selectedCustomer.getDate();
 		String time = tTime.format(dt);
-		// =================================================
-		area.append("Customer Billing Systems\n");
-		area.append(time+"\n");
+		area.append(time+"\t!!Payment on Delievery!!"+"\n\n");
+		area.append("CustomerName: " +  selectedCustomer.getName() + "  " + selectedCustomer.getVorname() + "\n");
+		
+		area.append("------------------------------------------------------------------\n");
+		area.setEnabled(true);
+	
 		double iTotal = 0.0;
-
+		area.append("Items------------------------------------Price--------------\n");
 		for (Item item : selectedCustomer.getItems()) {
-			area.append(item.getName() + "\t" + item.getTotal() + "\n");
+			area.append(item.getName() + "\n");
+			area.append(item.getQty()+"x"+item.getCost()+"\t\t"+item.getTotal() + "\n");
 			iTotal += item.getTotal();
 
 		}
-		area.append("-------\t Thank you\t-------\n");
-		area.append("Total\5t" + iTotal);
+		area.append("-----------------------------------------------------------------\n");
+		area.append("Total\t\t" + iTotal);
+		area.append("\n\n----------------------\t Thank you for your Shopping--\n");
+		area.append("Delievery Address:" + "\n");
+		area.append("Street" + selectedCustomer.getAddress()+"\n");
+		area.append("Delievery will be there within 1 Hour\n"+"If not Call here: XXXXXXXXXXX\n\n");
+		
+		area.append("\t--------------------------\n\n" + "\tBe Happy and Healthy :):)");
 		
 		return area;
 

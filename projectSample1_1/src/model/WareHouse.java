@@ -16,7 +16,7 @@ public class WareHouse {
 		// creating an Empty Integer List
 		List<Item> itemList = new ArrayList<Item>();
 			
-		Item item0 = new Item(0, "--", ItemType.Nop, 0.0);
+		Item item0 = new Item(0, "--", ItemType.Nop, 0.00);
 		itemList.add(item0);
 		
 		Item item1 = new Item(1,"Wasa Knäckebrot Sesam 200g", ItemType.Bread, 1.24 );
@@ -25,7 +25,7 @@ public class WareHouse {
 		Item item2 = new Item(2,"Bio Hähnchenbrustfilet 300g", ItemType.Meat, 3.99 );
 		itemList.add(item2);
 
-		Item item3 = new Item(3,"Coca-Cola Light 1L", ItemType.Drink, 1.90 );
+		Item item3 = new Item(3,"Coca-Cola Light 1L", ItemType.Drink, 1.88 );
 		itemList.add(item3);
 
 		Item item4 = new Item(4,"Kartoffeln 2.5 Kg", ItemType.Vegetables, 1.49 );

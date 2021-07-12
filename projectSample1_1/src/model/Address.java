@@ -1,10 +1,15 @@
+
+
 package model;
 
+/**
+ * @author pbn-e531
+ * */
 public class Address implements ModelValidation {
 
 	private String street;
 	private String houseNr;
-	private int plz;
+	private String plz;
 	private String city;
 
 	public String getStreet() {
@@ -23,11 +28,11 @@ public class Address implements ModelValidation {
 		this.city = city;
 	}
 
-	public int getPlz() {
+	public String getPlz() {
 		return plz;
 	}
 
-	public void setPlz(int plz) {
+	public void setPlz(String plz) {
 		this.plz = plz;
 	}
 	
@@ -45,7 +50,7 @@ public class Address implements ModelValidation {
 		if (street.isBlank() || street.isEmpty()) {
 			return false;
 		}
-		if (plz == 0) {
+		if (plz.isBlank() || plz.isEmpty()) {
 			return false;
 		}
 		if (city.isBlank() || city.isEmpty()) {
@@ -58,7 +63,7 @@ public class Address implements ModelValidation {
 
 	@Override
 	public String toString() {
-		return "Address [street=" + street + ", houseNr=" + houseNr + ", plz=" + plz + ", city=" + city + "]";
+		return street +"\n"+ houseNr + "\n"+ plz +"\n"+ city +"\n" ;
 	}
 	
 	

@@ -5,6 +5,8 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -45,6 +47,20 @@ public class SecondPage extends Page {
 		area.setPreferredSize(new Dimension(300,50));
 		info.add(area);
 		menuHelp.add(info);
+		
+		JMenu info1 = new JMenu("*");
+		JTextArea area1 = new JTextArea("Please try to fill up all the * sign boxes,\n" +
+				"so that it will be easier for us to deliever.");
+		area1.setPreferredSize(new Dimension(300,50));
+		info1.add(area1);
+		menuHelp.add(info1);
+		
+		JMenu info2 = new JMenu("Reset");
+		JTextArea area2 = new JTextArea("If you want to reset all your data,\n" + 
+		"it will help you with new fill up.");
+		area2.setPreferredSize(new Dimension(300,50));
+		info2.add(area2);
+		menuHelp.add(info2);
 		menuBar.add(menuHelp);
 		
 
@@ -123,6 +139,18 @@ public class SecondPage extends Page {
 		textPlz.setFont(font);
 		panel.add(textPlz);
 		
+		textPlz.addKeyListener(new KeyAdapter() {
+			public void keyPressed(KeyEvent ke) {
+				//String value = textPlz.getText();
+				//int l = value.length();
+				if (ke.getKeyChar() >= '0' && ke.getKeyChar() <= '9' ) {
+		               textPlz.setEditable(true);
+		            }else {
+		            	textPlz.setEditable(false);
+		            }				
+			}
+		});
+		
 		// City
 		JLabel city = new JLabel("City *");
 		city.setBounds(10, 310, 150, 35);
@@ -145,6 +173,19 @@ public class SecondPage extends Page {
 		textMobileNr.setBounds(160, 350, 200, 35);
 		textMobileNr.setFont(font); 
 		panel.add(textMobileNr);
+		
+		textMobileNr.addKeyListener(new KeyAdapter() {
+			public void keyPressed(KeyEvent ke) {
+				//String value = textMobileNr.getText();
+				//int l = value.length();
+				if (ke.getKeyChar() >= '0' && ke.getKeyChar() <= '9') {
+					textMobileNr.setEditable(true);
+		            }else {
+		            	textMobileNr.setEditable(false);
+		            }
+				
+			}
+		});
 		
 		// Receipt Name
 		JLabel receiptName = new JLabel("Receipt Name");
@@ -183,17 +224,15 @@ public class SecondPage extends Page {
 				Address address = new Address();
 				address.setStreet(textStreet.getText());
 				address.setHouseNr(textHouseNr.getText());
-				// Warning
-				address.setPlz(Integer.parseInt(textPlz.getText()));
+				address.setPlz(textPlz.getText());
+				
 				address.setCity(textCity.getText());
 				customer.setAddress(address);
 				customer.setMobileNr(textMobileNr.getText());
 				customer.setReceipientName(textReceiptName.getText());
 				customer.setDetails(textDetails.getText());
-
 				
 				boolean valid = customer.validate();
-				valid = true;
 				if (valid) {
 					
 					frame.setVisible(false);
@@ -203,7 +242,7 @@ public class SecondPage extends Page {
 					tp.show();
 				
 				} else {
-					if (JOptionPane.showConfirmDialog(frame, "Invalid First Name or Last Name", "Validation",
+					if (JOptionPane.showConfirmDialog(frame, "Invalid, must fill up * box", "Validation",
 							JOptionPane.CLOSED_OPTION) == JOptionPane.CLOSED_OPTION) {
 						System.exit(0);
 					}
@@ -213,6 +252,28 @@ public class SecondPage extends Page {
 		});
 		
 		panel.add(btnSave);
+		
+		JButton btnReset = new JButton("Reset");
+		btnReset.setFont(font);
+		btnReset.setBounds(130, 590, 100, 30);
+		
+		btnReset.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				textFirstName.setText(null);
+				textLastName.setText(null);
+				textStreet.setText(null);
+				textHouseNr.setText(null);
+				textPlz.setText(null);
+				textCity.setText(null);
+				textMobileNr.setText(null);
+				textReceiptName.setText(null);
+				textDetails.setText(null);
+			}
+			
+		});
+		panel.add(btnReset);
 
 		JButton btnCancel = new JButton("Exit");
 		btnCancel.setFont(font);

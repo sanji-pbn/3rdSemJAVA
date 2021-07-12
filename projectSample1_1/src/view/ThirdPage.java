@@ -1,12 +1,15 @@
 package view;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
@@ -40,6 +43,41 @@ public class ThirdPage extends Page {
 		frame.setTitle("Buy items ");
 		frame.setBounds(0, 0, 450, 550);
 		frame.setLocationRelativeTo(null);
+		
+		JMenuBar menuBar = new JMenuBar();
+		frame.setJMenuBar(menuBar);
+		
+		JMenu menuHelp = new JMenu("Help");
+		JMenu info = new JMenu("Add");		
+		JTextArea area = new JTextArea("By Clicking add, you will get the \n" + 
+				"list of Items which are available");
+		area.setPreferredSize(new Dimension(300,50));
+		info.add(area);
+		menuHelp.add(info);
+		
+		JMenu info1 = new JMenu("CheckList");		
+		JTextArea area1 = new JTextArea("By Clicking CheckList, you will get the\n" +
+					"list of items which you have bought");
+		area1.setPreferredSize(new Dimension(300,50));
+		info1.add(area1);
+		menuHelp.add(info1);
+		
+		JMenu info2 = new JMenu("Delete");		
+		JTextArea area2 = new JTextArea("It will help you to delete your item");
+		area2.setPreferredSize(new Dimension(300,50));
+		info2.add(area2);
+		menuHelp.add(info2);
+		
+		JMenu info3 = new JMenu("Print");		
+		JTextArea area3 = new JTextArea("It will print out your bill and \n" + 
+					"we will delievery you your items");
+		area3.setPreferredSize(new Dimension(300,50));
+		info3.add(area3);
+		menuHelp.add(info3);
+		
+		
+		menuBar.add(menuHelp);
+
 
 		JPanel contentPanel1 = new JPanel();
 		contentPanel1.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -48,7 +86,7 @@ public class ThirdPage extends Page {
 		contentPanel1.setLayout(null);
 
 		JPanel panel = new JPanel();
-		panel.setBounds(20, 10, 400, 500);
+		panel.setBounds(20, 10, 400, 450);
 		panel.setBorder(new MatteBorder(14, 14, 14, 14, (Color) new Color(95, 158, 160)));
 		panel.setBackground(new Color(95, 158, 160));
 		contentPanel1.add(panel);
@@ -75,8 +113,15 @@ public class ThirdPage extends Page {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String itemsList = showItems();
-				checkList.setText(itemsList);
+				if (customer.getItems().size() > 0) {
+					String itemsList = showItems();
+					checkList.setText(itemsList);
+				} else {
+					if (JOptionPane.showConfirmDialog(frame, "You must buy one item at first!", "Validation",
+							JOptionPane.CLOSED_OPTION) == JOptionPane.CLOSED_OPTION) {
+						System.exit(0);
+					}
+				}
 			}
 		});
 
@@ -90,7 +135,10 @@ public class ThirdPage extends Page {
 					DeleteItem deleteItem = new DeleteItem(customer.getItems());
 					deleteItem.show();
 				} else {
-
+					if (JOptionPane.showConfirmDialog(frame, "You must buy one item at first to go to delete!", "Validation",
+							JOptionPane.CLOSED_OPTION) == JOptionPane.CLOSED_OPTION) {
+						System.exit(0);
+					}
 				}
 			}
 		});
@@ -114,7 +162,7 @@ public class ThirdPage extends Page {
 		btnExit.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (JOptionPane.showConfirmDialog(frame, "Confirm if you want to exit", "Customer Billing System",
+				if (JOptionPane.showConfirmDialog(frame, "Confirm if you want to exit!!", "Customer Billing System",
 						JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
 					System.exit(0);
 				}
@@ -133,7 +181,10 @@ public class ThirdPage extends Page {
 					printItem.show();
 					frame.setVisible(false);
 				} else {
-
+					if (JOptionPane.showConfirmDialog(frame, "You must buy one item atleast!!", "Validation",
+							JOptionPane.CLOSED_OPTION) == JOptionPane.CLOSED_OPTION) {
+						System.exit(0);
+					}
 				}
 			}
 		});
@@ -153,7 +204,7 @@ public class ThirdPage extends Page {
 	private String showItems() {
 		String itemList = "";
 		for (Item item : customer.getItems()) {
-			itemList += item.getName() + " " + item.getQty() + "\n";
+			itemList += item.getName() + " X " + item.getQty() + "\n";
 		}
 		return itemList;
 

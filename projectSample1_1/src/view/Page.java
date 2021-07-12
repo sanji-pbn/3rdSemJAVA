@@ -7,7 +7,10 @@ import javax.swing.JPanel;
 import javax.swing.border.MatteBorder;
 
 public abstract class Page {
-
+	
+	/**
+	 * @return JFrame with 350 x 300 in centre of the screen
+	 * */
 	public abstract void show();
 
 	public JFrame getFrame(String title) {
